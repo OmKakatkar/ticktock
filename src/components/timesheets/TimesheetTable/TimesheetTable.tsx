@@ -5,11 +5,6 @@ import { useRouter } from 'next/navigation'
 import { ChevronUpDownIcon } from '@heroicons/react/24/outline'
 import { Badge } from '@/components/ui/Badge'
 import { Button, ButtonVariant, ButtonSize } from '@/components/ui/Button'
-import {
-  Typography,
-  TypographyTag,
-  TypographyVariant,
-} from '@/components/ui/Typography'
 import { WeeklyTimesheet, TimesheetStatus } from '@/types'
 
 export function TimesheetTable() {
@@ -129,20 +124,10 @@ export function TimesheetTable() {
                 key={timesheet.id}
                 className='group hover:bg-gray-50 transition-colors'>
                 <td className='py-4'>
-                  <Typography
-                    tag={TypographyTag.span}
-                    variant={TypographyVariant.Body_MD}
-                    className='text-gray-900'>
-                    {timesheet.week}
-                  </Typography>
+                  <span className='text-gray-900'>{timesheet.week}</span>
                 </td>
                 <td className='py-4'>
-                  <Typography
-                    tag={TypographyTag.span}
-                    variant={TypographyVariant.Body_MD}
-                    className='text-gray-600'>
-                    {timesheet.dateRange}
-                  </Typography>
+                  <span className='text-gray-600'>{timesheet.dateRange}</span>
                 </td>
                 <td className='py-4'>
                   <Badge status={timesheet.status} />

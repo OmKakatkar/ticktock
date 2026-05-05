@@ -3,11 +3,10 @@ import { mockTimesheets } from '@/lib/mockData'
 
 export async function GET(
   _req: Request,
-  { params }: { params: { weekId: string } },
+  { params }: { params: Promise<{ weekId: string }> },
 ) {
-  const timesheet = mockTimesheets.find(
-    (t) => t.id === Number.parseInt(params.weekId),
-  )
+  const { weekId } = await params
+  const timesheet = mockTimesheets.find((t) => t.id === Number.parseInt(weekId))
 
   if (!timesheet) {
     return NextResponse.json({ error: 'Timesheet not found' }, { status: 404 })

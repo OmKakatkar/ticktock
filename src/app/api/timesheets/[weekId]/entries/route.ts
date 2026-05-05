@@ -3,24 +3,23 @@ import { mockEntries } from '@/lib/mockData'
 
 export async function GET(
   _req: Request,
-  { params }: { params: { weekId: string } },
+  { params }: { params: Promise<{ weekId: string }> },
 ) {
-  const entries = mockEntries.filter(
-    (e) => e.weekId === Number.parseInt(params.weekId),
-  )
-
+  const { weekId } = await params
+  const entries = mockEntries.filter((e) => e.weekId === parseInt(weekId))
   return NextResponse.json(entries)
 }
 
 export async function POST(
   req: Request,
-  { params }: { params: { weekId: string } },
+  { params }: { params: Promise<{ weekId: string }> },
 ) {
+  const { weekId } = await params
   const body = await req.json()
 
   const newEntry = {
     id: Date.now(),
-    weekId: Number.parseInt(params.weekId),
+    weekId: parseInt(weekId),
     date: body.date,
     displayDate: body.displayDate,
     taskName: body.taskName,
@@ -30,6 +29,5 @@ export async function POST(
   }
 
   mockEntries.push(newEntry)
-
   return NextResponse.json(newEntry, { status: 201 })
 }

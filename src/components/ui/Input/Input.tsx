@@ -15,7 +15,7 @@ export function Input({
   const id = useId()
 
   return (
-    <div className={classNames('flex flex-col gap-1', containerClassName)}>
+    <div className={classNames('flex flex-col gap-2', containerClassName)}>
       {label && (
         <label
           htmlFor={id}

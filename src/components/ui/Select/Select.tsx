@@ -24,7 +24,7 @@ export function Select({
   const selectedOption = options.find((o) => o.value === value)
 
   return (
-    <div className={classNames('flex flex-col gap-1', containerClassName)}>
+    <div className={classNames('flex flex-col gap-2', containerClassName)}>
       {label && (
         <label
           htmlFor={id}

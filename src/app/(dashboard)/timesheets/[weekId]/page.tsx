@@ -3,11 +3,12 @@ import { notFound } from 'next/navigation'
 import { WeekDetailView } from '@/components/timesheets'
 
 type Props = {
-  params: { weekId: string }
+  params: Promise<{ weekId: string }>
 }
 
-export default function WeekDetailPage({ params }: Readonly<Props>) {
-  const weekId = Number.parseInt(params.weekId)
+export default async function WeekDetailPage({ params }: Props) {
+  const { weekId: weekIdStr } = await params
+  const weekId = parseInt(weekIdStr)
 
   if (Number.isNaN(weekId)) notFound()
 

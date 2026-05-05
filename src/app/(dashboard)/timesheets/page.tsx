@@ -1,23 +1,14 @@
 import { Suspense } from 'react'
 import { TimesheetTable } from '@/components/timesheets'
-import {
-  Typography,
-  TypographyTag,
-  TypographyVariant,
-  TypographyWeight,
-} from '@/components/ui/Typography'
 
 export default function TimesheetsPage() {
   return (
     <div className='mx-auto max-w-7xl px-6 py-8'>
       <div className='rounded-xl border border-gray-200 bg-white p-6 shadow-sm'>
-        <Typography
-          tag={TypographyTag.h1}
-          variant={TypographyVariant.Display_XS}
-          weight={TypographyWeight.SemiBold}
-          className='mb-6 text-gray-900'>
+        <h1 className='mb-6 text-2xl font-semibold text-gray-900'>
           Your Timesheets
-        </Typography>
+        </h1>
+
         <Suspense fallback={<TimesheetTableSkeleton />}>
           <TimesheetTable />
         </Suspense>

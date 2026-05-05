@@ -3,13 +3,6 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { PlusIcon, EllipsisHorizontalIcon } from '@heroicons/react/24/outline'
-import {
-  Typography,
-  TypographyTag,
-  TypographyVariant,
-  TypographyWeight,
-} from '@/components/ui/Typography'
-import { Button, ButtonVariant, ButtonSize } from '@/components/ui/Button'
 import { AddEntryModal } from '@/components/timesheets'
 import { WeeklyTimesheet, TimesheetEntry } from '@/types'
 import { GroupedEntries, WeekDetailViewProps } from './WeekDetailView.types'
@@ -27,6 +20,7 @@ export function WeekDetailView({ weekId }: Readonly<WeekDetailViewProps>) {
   useEffect(() => {
     async function fetchData() {
       try {
+        console.log(weekId)
         const [timesheetRes, entriesRes] = await Promise.all([
           fetch(`/api/timesheets/${weekId}`),
           fetch(`/api/timesheets/${weekId}/entries`),
@@ -93,27 +87,13 @@ export function WeekDetailView({ weekId }: Readonly<WeekDetailViewProps>) {
     <div className='rounded-xl border border-gray-200 bg-white p-6 shadow-sm'>
       {/* Header */}
       <div className='mb-1 flex items-start justify-between'>
-        <Typography
-          tag={TypographyTag.h1}
-          variant={TypographyVariant.Display_XS}
-          weight={TypographyWeight.SemiBold}
-          className='text-gray-900'>
-          This week&apos;s timesheet
-        </Typography>
-        <Typography
-          tag={TypographyTag.span}
-          variant={TypographyVariant.Body_SM}
-          className='text-gray-500'>
+        <h1 className='text-gray-900'>This week&apos;s timesheet</h1>
+        <span className='text-gray-500'>
           {totalHours}/{targetHours} hrs
-        </Typography>
+        </span>
       </div>
 
-      <Typography
-        tag={TypographyTag.p}
-        variant={TypographyVariant.Body_SM}
-        className='mb-4 text-gray-400'>
-        {timesheet.dateRange}
-      </Typography>
+      <span className='mb-4 text-gray-400'>{timesheet.dateRange}</span>
 
       {/* Progress bar */}
       <div className='mb-6 flex items-center gap-3'>
@@ -123,12 +103,7 @@ export function WeekDetailView({ weekId }: Readonly<WeekDetailViewProps>) {
             style={{ width: `${progressPercent}%` }}
           />
         </div>
-        <Typography
-          tag={TypographyTag.span}
-          variant={TypographyVariant.Body_XS}
-          className='text-gray-400'>
-          {Math.round(progressPercent)}%
-        </Typography>
+        <span className='text-gray-400'>{Math.round(progressPercent)}%</span>
       </div>
 
       {/* Back button */}
@@ -142,34 +117,16 @@ export function WeekDetailView({ weekId }: Readonly<WeekDetailViewProps>) {
       <div className='space-y-6'>
         {Object.entries(groupedEntries).map(([date, dayEntries]) => (
           <div key={date}>
-            <Typography
-              tag={TypographyTag.h2}
-              variant={TypographyVariant.Body_MD}
-              weight={TypographyWeight.SemiBold}
-              className='mb-2 text-gray-900'>
-              {date}
-            </Typography>
+            <h2 className='mb-2 text-gray-900'> {date}</h2>
 
             <div className='overflow-hidden rounded-lg border border-gray-200'>
               {dayEntries.map((entry) => (
                 <div
                   key={entry.id}
                   className='flex items-center justify-between border-b border-gray-100 px-4 py-3 last:border-0 hover:bg-gray-50'>
-                  <Typography
-                    tag={TypographyTag.span}
-                    variant={TypographyVariant.Body_MD}
-                    className='flex-1 text-gray-900'>
-                    {entry.taskName}
-                  </Typography>
-
+                  <span className='flex-1 text-gray-900'>{entry.taskName}</span>
                   <div className='flex items-center gap-3'>
-                    <Typography
-                      tag={TypographyTag.span}
-                      variant={TypographyVariant.Body_SM}
-                      className='text-gray-500'>
-                      {entry.hours} hrs
-                    </Typography>
-
+                    <span className='text-gray-500'>{entry.hours} hrs</span>
                     <span className='rounded bg-blue-50 px-2 py-0.5 text-xs text-blue-600'>
                       {entry.project}
                     </span>
