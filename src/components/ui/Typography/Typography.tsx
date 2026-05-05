@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import styles from './Typography.module.scss'
+import styles from './Typography.module.css'
 import {
   TypographyProps,
   TypographyTag,

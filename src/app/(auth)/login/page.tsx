@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import { Button, Input } from '@/components/ui'
+import { Button, ButtonSize, ButtonVariant, Input } from '@/components/ui'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -47,36 +47,27 @@ export default function LoginPage() {
             onSubmit={handleSubmit}
             className='space-y-5'>
             <div>
-              <label
-                htmlFor='email'
-                className='mb-1.5 block text-sm font-medium text-gray-700'>
-                Email
-              </label>
               <Input
-                id='email'
+                label='Email'
                 type='email'
                 placeholder='name@example.com'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className='w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500'
+                isRequired
               />
             </div>
 
             <div>
-              <label
-                htmlFor='password'
-                className='mb-1.5 block text-sm font-medium text-gray-700'>
-                Password
-              </label>
               <Input
-                id='password'
+                label='Password'
                 type='password'
                 placeholder='••••••••••'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className='w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500'
+                isRequired
+                error={error || undefined}
               />
             </div>
 
@@ -95,13 +86,13 @@ export default function LoginPage() {
               </label>
             </div>
 
-            {error && <p className='text-sm text-red-500'>{error}</p>}
-
             <Button
-              type='submit'
-              disabled={loading}
-              className='w-full rounded-md bg-blue-600 py-2.5 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-60'>
-              {loading ? 'Signing in...' : 'Sign in'}
+              variant={ButtonVariant.Primary}
+              size={ButtonSize.LG}
+              isFullWidth
+              loading={loading}
+              type='submit'>
+              Sign in
             </Button>
           </form>
         </div>
