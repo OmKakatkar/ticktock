@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import { Button, Input } from '@/components/ui'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -12,7 +13,7 @@ export default function LoginPage() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault()
     setError('')
     setLoading(true)
@@ -51,7 +52,7 @@ export default function LoginPage() {
                 className='mb-1.5 block text-sm font-medium text-gray-700'>
                 Email
               </label>
-              <input
+              <Input
                 id='email'
                 type='email'
                 placeholder='name@example.com'
@@ -68,8 +69,8 @@ export default function LoginPage() {
                 className='mb-1.5 block text-sm font-medium text-gray-700'>
                 Password
               </label>
-              <input
-                id='id'
+              <Input
+                id='password'
                 type='password'
                 placeholder='••••••••••'
                 value={password}
@@ -96,12 +97,12 @@ export default function LoginPage() {
 
             {error && <p className='text-sm text-red-500'>{error}</p>}
 
-            <button
+            <Button
               type='submit'
               disabled={loading}
               className='w-full rounded-md bg-blue-600 py-2.5 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-60'>
               {loading ? 'Signing in...' : 'Sign in'}
-            </button>
+            </Button>
           </form>
         </div>
       </div>
