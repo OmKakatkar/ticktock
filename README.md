@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ticktock — Timesheet Management App
 
-## Getting Started
+A SaaS-style timesheet management application built for the TenTwenty Frontend Technical Assessment.
 
-First, run the development server:
+## Live Demo
+
+[https://ticktock-om.vercel.app](https://ticktock-om.vercel.app)
+
+## Test Credentials
+
+Email: john@tentwenty.me  
+Password: password123
+
+## Setup Instructions
+
+### Prerequisites
+
+- Node.js 18+
+- Yarn
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repo-url>
+cd ticktock
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env.local` file in the root:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`NEXTAUTH_SECRET=your-secret-key-here
+NEXTAUTH_URL=http://localhost:3000`
 
-## Learn More
+### Run Development Server
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+yarn dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Frameworks and Libraries
 
-## Deploy on Vercel
+- **Next.js 16** — App Router, API routes, proxy.ts for route protection
+- **React 19** — UI layer
+- **TypeScript** — Full type safety
+- **Tailwind CSS v4** — Styling
+- **next-auth v4** — Authentication with Credentials provider
+- **@headlessui/react** — Accessible dropdown components
+- **@heroicons/react** — Icons
+- **classnames** — Conditional class composition
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Architecture
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+All client-side data fetching goes through internal Next.js API routes (`/api/*`). Components never call mock data directly — this mirrors real-world API integration patterns.
+
+Mock data lives in `src/lib/mockData.ts` and is served through:
+
+- `GET /api/timesheets` — list of weekly timesheets
+- `GET /api/timesheets/[weekId]` — single week detail
+- `GET /api/timesheets/[weekId]/entries` — entries for a week
+- `POST /api/timesheets/[weekId]/entries` — add a new entry
+
+Authentication is handled by next-auth with a Credentials provider. Sessions are JWT-based. Route protection runs in `proxy.ts` using `getToken` from next-auth/jwt.
+
+## Project Structure
+
+```
+src/
+app/
+(auth)/login/          — Login page
+(dashboard)/
+timesheets/          — Dashboard table
+timesheets/[weekId]/ — Weekly detail view
+api/                   — Internal API routes
+components/
+ui/                    — Button, Input, Select, Badge
+timesheets/            — DashboardNav, TimesheetTable,
+WeekDetailView, AddEntryModal
+lib/                     — Mock data, auth config
+types/                   — TypeScript interfaces
+```
+
+## Design System
+
+UI primitives (Button, Input, Select, Badge) are reusable, typed components built to be composable across the application.
+
+## Assumptions
+
+- Authentication uses dummy credentials — no real database
+- Mock data is in-memory — new entries persist until page refresh
+- Pagination UI is present but not wired to real pagination logic
+- Date Range and Status filters are rendered but not functional
+- The "Edit" and "Delete" actions in the entry menu are rendered but not implemented
+
+## Time Spent
+
+Approximately 8 hours total across two days.
