@@ -13,10 +13,10 @@ export default async function DashboardLayout({
   if (!session) redirect('/login')
 
   return (
-    <div className='min-h-screen bg-gray-50'>
+    <div className='min-h-screen bg-[#f8f8f8]'>
       <DashboardNav userName={session.user?.name ?? 'User'} />
       <main>{children}</main>
-      <footer className='py-6 text-center'>
+      <footer className='rounded-xl border border-gray-200 bg-white p-6 shadow-sm text-center max-w-7xl mx-6 mb-24'>
         <p className='text-sm text-gray-400'>
           © 2024 tentwenty. All rights reserved.
         </p>

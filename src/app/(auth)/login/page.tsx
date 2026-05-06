@@ -39,7 +39,7 @@ export default function LoginPage() {
       {/* Left side — form */}
       <div className='flex w-full flex-col justify-center px-18 bg-white md:w-1/2'>
         <div className='mx-auto w-full'>
-          <h1 className='mb-5 text-2xl font-semibold text-gray-900'>
+          <h1 className='mb-5 text-xl leading-[125%] tracking-normal font-bold text-gray-900'>
             Welcome back
           </h1>
 
@@ -77,11 +77,11 @@ export default function LoginPage() {
                 type='checkbox'
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                className='h-4 w-4 rounded border-gray-300 text-blue-600'
+                className='h-4 w-4 rounded border-gray-50 text-blue-600'
               />
               <label
                 htmlFor='remember'
-                className='text-sm text-gray-600'>
+                className='text-sm text-gray-600 font-medium leading-3.5'>
                 Remember me
               </label>
             </div>
@@ -101,8 +101,10 @@ export default function LoginPage() {
       {/* Right side — branding */}
       <div className='hidden flex-col justify-center bg-blue-600 px-18 md:flex md:w-1/2'>
         <div>
-          <h2 className='mb-3 text-4xl font-semibold text-white'>ticktock</h2>
-          <p className='text-sm leading-relaxed text-blue-100'>
+          <h2 className='mb-3 text-[40px] leading-[150%] font-semibold text-white'>
+            ticktock
+          </h2>
+          <p className='leading-[150%] text-blue-100'>
             Introducing ticktock, our cutting-edge timesheet web application
             designed to revolutionize how you manage employee work hours. With
             ticktock, you can effortlessly track and monitor employee attendance

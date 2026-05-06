@@ -28,7 +28,7 @@ export function Select({
       {label && (
         <label
           htmlFor={id}
-          className='text-sm font-medium text-gray-700'>
+          className='text-sm leading-[150%] font-medium text-gray-700'>
           {label}
           {isRequired && <span className='ml-1 text-red-500'>*</span>}
         </label>

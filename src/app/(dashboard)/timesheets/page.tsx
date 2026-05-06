@@ -3,9 +3,9 @@ import { TimesheetTable } from '@/components/timesheets'
 
 export default function TimesheetsPage() {
   return (
-    <div className='mx-auto max-w-7xl px-6 py-8'>
-      <div className='rounded-xl border border-gray-200 bg-white p-6 shadow-sm'>
-        <h1 className='mb-6 text-2xl font-semibold text-gray-900'>
+    <div className='mx-auto max-w-7xl px-6 py-8 bg-[#f8f8f8]'>
+      <div className='rounded-xl border border-gray-200 bg-white p-6 shadow-sm max-w-7xl'>
+        <h1 className='mb-6 leading-6 text-2xl font-bold text-gray-900'>
           Your Timesheets
         </h1>
 

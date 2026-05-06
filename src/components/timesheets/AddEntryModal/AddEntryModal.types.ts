@@ -6,3 +6,9 @@ export type AddEntryModalProps = {
   onClose: () => void
   onSuccess: (entry: TimesheetEntry) => void
 }
+
+export type FormErrors = {
+  project?: string
+  type?: string
+  taskName?: string
+}

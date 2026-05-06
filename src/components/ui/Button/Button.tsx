@@ -28,12 +28,12 @@ const getSizeClasses = (size: ButtonSize) => {
     case ButtonSize.MD:
       return 'px-4 py-2 text-sm'
     case ButtonSize.LG:
-      return 'px-6 py-3 text-base'
+      return 'px-6 py-2.5 text-base'
   }
 }
 
 const baseClasses =
-  'inline-flex items-center justify-center font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors disabled:cursor-not-allowed'
+  'inline-flex items-center justify-center font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors disabled:cursor-not-allowed text-sm leading-[150%]'
 
 export function Button({
   variant = ButtonVariant.Primary,

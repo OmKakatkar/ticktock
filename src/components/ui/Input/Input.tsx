@@ -19,7 +19,7 @@ export function Input({
       {label && (
         <label
           htmlFor={id}
-          className='text-sm font-medium text-gray-700'>
+          className='text-sm leading-[150%] font-medium text-gray-700'>
           {label}
           {isRequired && <span className='ml-1 text-red-500'>*</span>}
         </label>
@@ -29,7 +29,7 @@ export function Input({
         ref={ref}
         id={id}
         className={classNames(
-          'w-full rounded-md border px-3 py-2 text-sm text-gray-900',
+          'w-full rounded-md border px-3 py-2 text-sm leading-[125%] text-gray-900',
           'placeholder-gray-400',
           'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500',
           'disabled:bg-gray-50 disabled:text-gray-500 disabled:cursor-not-allowed',

@@ -84,7 +84,7 @@ export function WeekDetailView({ weekId }: Readonly<WeekDetailViewProps>) {
   }
 
   return (
-    <div className='rounded-xl border border-gray-200 bg-white p-6 shadow-sm'>
+    <div className='rounded-xl border border-gray-200 bg-white p-6 shadow-sm max-w-7xl'>
       {/* Header */}
       <div className='mb-1 flex items-start justify-between'>
         <h1 className='text-gray-900'>This week&apos;s timesheet</h1>

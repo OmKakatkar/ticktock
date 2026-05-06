@@ -24,7 +24,7 @@ export const mockTimesheets: WeeklyTimesheet[] = [
     dateRange: '8 - 12 January, 2024',
     startDate: '2024-01-08',
     endDate: '2024-01-12',
-    status: 'completed',
+    status: 'missing',
     totalHours: 40,
   },
   {
