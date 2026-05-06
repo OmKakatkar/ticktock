@@ -16,10 +16,12 @@ export default async function DashboardLayout({
     <div className='min-h-screen bg-[#f8f8f8]'>
       <DashboardNav userName={session.user?.name ?? 'User'} />
       <main>{children}</main>
-      <footer className='rounded-xl border border-gray-200 bg-white p-6 shadow-sm text-center max-w-7xl mx-6 mb-24'>
-        <p className='text-sm text-gray-400'>
-          © 2024 tentwenty. All rights reserved.
-        </p>
+      <footer className='mx-auto mb-24 max-w-7xl max-[1280px]:mx-6'>
+        <div className='rounded-xl border border-gray-200 bg-white p-6 shadow-sm text-center'>
+          <p className='text-sm text-gray-400'>
+            © 2024 tentwenty. All rights reserved.
+          </p>
+        </div>
       </footer>
     </div>
   )
